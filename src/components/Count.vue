@@ -4,15 +4,14 @@
   </div>
 </template>
 <script>
-import store from '../store'
 export default {
   name: 'count',
   components: {},
-  data: () => store.state,
+  props: ['count'],
   methods: {
     handleOnClickCountUp: function(e) {
-      e.preventDefault();
-      this.count++;
+      e.preventDefault()
+      this.$emit('count-up')
     }
   }
 }
