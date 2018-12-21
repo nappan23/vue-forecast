@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{city.name}}</div>  
+    <div>{{ city.name }}</div>
     <div v-if="!current">
       loading...
     </div>
@@ -23,6 +23,11 @@
   </div>
 </template>
 <script>
+  import OpenWeatherMapService from '../services/OpenWeatherMapService'
+  async function init() {
+    const res = await OpenWeatherMapService.current(this.city.name)
+    this.current = res.data
+  }
   export default {
     name: 'currentWeather',
     components: {},
@@ -31,7 +36,11 @@
         current: null
       }
     },
-    props: ['city']
+    watch: {
+      city: init
+    },
+    props: ['city'],
+    beforeMount: init
   }
 </script>
 <style>
