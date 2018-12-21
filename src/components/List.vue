@@ -3,7 +3,7 @@
     <h3>{{title}}</h3>
     <ul class="list">
       <li v-for="(item, index) in items" :key="index">
-        <a @click="handleOnClickSelect($event, item.name)">{{ item.name }}</a>
+        <a @click="handleOnClickSelect($event, item)">{{ item.name }}</a>
         <a @click="handleOnClickDelete($event, index)"><small>削除</small></a>
       </li>
     </ul>
@@ -22,9 +22,9 @@
           this.$emit('delete-item', index)
         }
       },
-      handleOnClickSelect: function (e, itemName) {
+      handleOnClickSelect: function (e, item) {
         e.preventDefault()
-        this.$emit('select-item', itemName)
+        this.$emit('select-item', item)
       }
     }
   }

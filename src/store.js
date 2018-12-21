@@ -6,6 +6,6 @@ export default {
       { name: 'tokyo' },
       { name: 'osaka' }
     ],
-    city: 'Tokyo'
+    city: {}
   }
 }

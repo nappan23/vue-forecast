@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{city}}</div>  
+    <div>{{city.name}}</div>  
     <div v-if="!current">
       loading...
     </div>
