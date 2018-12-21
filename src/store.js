@@ -5,6 +5,7 @@ export default {
     cities: [
       { name: 'tokyo' },
       { name: 'osaka' }
-    ]
+    ],
+    city: 'Tokyo'
   }
 }

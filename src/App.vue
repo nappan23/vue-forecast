@@ -2,11 +2,12 @@
   <div id="app" class="container">
     <aside class="sub-container">
       <CityInput @submit-test="handleOnSubmit" />
-      <List title="一覧" :items="cities" @delete-item="handleOnDeleteItem" />
+      <List title="一覧" :items="cities" @delete-item="handleOnDeleteItem" @select-item="handleOnSelectItem"/>
     </aside>
     <main class="main-container">
       <p>{{ message }}</p>
       <Count :count="count" @count-up="handleOnCountUp" />
+      <CurrentWeather :city="city" />
     </main>
   </div>
 </template>
@@ -15,12 +16,14 @@ import store from './store';
 import Count from './components/Count'
 import List from './components/List'
 import CityInput from './components/CityInput'
+import CurrentWeather from './components/CurrentWeather'
 export default {
   name: 'app',
   components: {
     Count,
     List,
-    CityInput
+    CityInput,
+    CurrentWeather
   },
   data: () => store.state,
   methods: {
@@ -34,6 +37,9 @@ export default {
     },
     handleOnDeleteItem: function(index) {
       this.cities.splice(index, 1)
+    },
+    handleOnSelectItem: function(item) {
+      this.city = item
     }
   }
 }
